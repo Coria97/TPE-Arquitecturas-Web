@@ -1,0 +1,15 @@
+services:
+  db_reports:
+    container_name: reports
+    image: mysql:8.0.26
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: db_reports
+    ports:
+      - "127.0.0.1:3308:3306"
+    command: mysqld --lower_case_table_names=1
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: '256M'
