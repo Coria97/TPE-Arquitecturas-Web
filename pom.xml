@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.tpe</groupId>
 	<artifactId>tpe</artifactId>
@@ -19,6 +19,7 @@
 		<module>microservicio_stops</module>
 		<module>microservicio_travels</module>
 		<module>microservicio_users</module>
+		<module>config_microservicios</module>
 	</modules>
 	<url/>
 	<licenses>
@@ -57,7 +58,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-web</artifactId>
 			</dependency>
-
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-config-server</artifactId>
+				<version>4.1.3</version>
+			</dependency>
 			<dependency>
 				<groupId>com.mysql</groupId>
 				<artifactId>mysql-connector-j</artifactId>

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: microservicio_reports
+  config:
+    import: optional:configserver:http://localhost:8081
