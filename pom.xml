@@ -20,6 +20,7 @@
 		<module>microservicio_travels</module>
 		<module>microservicio_users</module>
 		<module>config_microservicios</module>
+		<module>eureka_service</module>
 	</modules>
 	<url/>
 	<licenses>
@@ -74,6 +75,19 @@
 				<scope>annotationProcessor</scope>
 				<optional>true</optional>
 				<version>1.18.34</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+				<version>4.1.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-commons</artifactId>
+				<version>4.1.4</version>
+				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
