@@ -13,6 +13,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>tpe</name>
 	<description>Trabajo practico especial</description>
+	<modules>
+		<module>microservicio_reports</module>
+		<module>microservicio_stops</module>
+		<module>microservicio_travels</module>
+		<module>microservicio_users</module>
+	</modules>
 	<url/>
 	<licenses>
 		<license/>
