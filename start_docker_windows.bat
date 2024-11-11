@@ -7,5 +7,5 @@ docker compose -f .\microservicio_stops\src\main\java\com\tpe\microservicio_stop
 docker compose -f .\microservicio_travels\src\main\java\com\tpe\microservicio_travels\docker\DatabaseTravels.yml up -d
 docker compose -f .\microservicio_users\src\main\java\com\tpe\microservicio_users\docker\DatabaseUser.yml up -d
 
-echo Microservicios levantados exitosamente.
+echo Bases de datos de los microservicios levantados exitosamente.
 pause

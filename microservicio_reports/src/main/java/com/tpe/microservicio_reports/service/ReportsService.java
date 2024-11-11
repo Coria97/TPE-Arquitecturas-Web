@@ -12,8 +12,8 @@ public class ReportsService {
 
     private ReportsRepository repository;
 
-    public List<ReportDTO> getAll(){
-        return this.repository.findAll();
+    public List<ReportDTO> getUsageScooters(boolean timeOut){
+        return this.repository.getUsageScooters();
     }
 
 

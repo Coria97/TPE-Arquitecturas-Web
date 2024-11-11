@@ -9,7 +9,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReportsRepository extends JpaRepository<ReportDTO,Long> {
 
-    @Query
-
-
 }

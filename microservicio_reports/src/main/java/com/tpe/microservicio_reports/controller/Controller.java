@@ -26,13 +26,12 @@ public class Controller {
     * */
 
     @GetMapping("/scooter")
-    public ResponseEntity<List<ReportDTO>> scooterReport() {
+    public ResponseEntity<List<ReportDTO>> scooterReport(@RequestParam("timeOut") boolean timeOut){
 
-        List<ReportDTO> reportScooter = this.service.getAll();
+        List<ReportDTO> reportScooter = this.service.getUsageScooters(timeOut);
         if(reportScooter.isEmpty()){
             return ResponseEntity.noContent().build();
         }
-
         return ResponseEntity.ok(reportScooter);
     }
 }
