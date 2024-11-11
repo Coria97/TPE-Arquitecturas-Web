@@ -14,6 +14,8 @@ public class Scooter {
     @Column
     private float time;
     @Column
+    private float timeOut;
+    @Column
     private String state;
     @ManyToOne (fetch = FetchType.EAGER)
     private Stop stop;
