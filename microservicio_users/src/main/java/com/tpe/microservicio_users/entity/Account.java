@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -15,6 +16,18 @@ public class Account {
     private float balance;
     @Column
     private String mpAccount;
-    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-    private List<UserAccount> userList;
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<UserAccount> userAccounts;
+
+    @Transient
+    private List<User> users;
+
+    @PostLoad
+    public void loadUsers() {
+        if (userAccounts != null) {
+            users = userAccounts.stream()
+                    .map(UserAccount::getUser)
+                    .collect(Collectors.toList());
+        }
+    }
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -24,6 +25,18 @@ public class User {
     private int phoneNumber;
     @Enumerated(EnumType.STRING)
     private Rol rol;
-    @OneToMany(mappedBy="account", fetch = FetchType.LAZY)
-    private List<UserAccount> accountList;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<UserAccount> userAccounts;
+
+    @Transient
+    private List<Account> accounts;
+
+    @PostLoad
+    public void loadAccounts() {
+        if (userAccounts != null) {
+            accounts = userAccounts.stream()
+                    .map(UserAccount::getAccount)
+                    .collect(Collectors.toList());
+        }
+    }
 }

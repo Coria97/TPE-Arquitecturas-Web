@@ -10,10 +10,8 @@ public class UserAccount {
     private UserAccountPK id;
     @ManyToOne
     @MapsId("userId")
-    @JoinColumn(name="id")
     private User user;
     @ManyToOne
     @MapsId("accountId")
-    @JoinColumn(name="id")
     private Account account;
 }
