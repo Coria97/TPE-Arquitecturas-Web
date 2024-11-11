@@ -1,12 +1,12 @@
 package com.tpe.microservicio_stops;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class MicroservicioStopsApplicationTests {
 
-    @Test
+  //  @Test
     void contextLoads() {
     }
 

@@ -5,7 +5,7 @@ spring:
     name: microservicio_reports
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3309/db_reports?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3309/users?createDatabaseIfNotExist=true
     username: root
     password: password
   jpa:

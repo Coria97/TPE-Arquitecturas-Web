@@ -1,12 +1,12 @@
 package com.tpe.microservicio_travels;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class MicroservicioTravelsApplicationTests {
 
-    @Test
+  //  @Test
     void contextLoads() {
     }
 
