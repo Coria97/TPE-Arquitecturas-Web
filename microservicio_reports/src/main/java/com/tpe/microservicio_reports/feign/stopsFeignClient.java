@@ -1,6 +1,9 @@
 package com.tpe.microservicio_reports.feign;
 
-@feign
-public class stopsFeignClient {
 
+import org.springframework.web.bind.annotation.GetMapping;
+
+//@FeignClient(name="microservicio_stops")
+public class stopsFeignClient {
+    //@GetMapping("/api/scooters")
 }

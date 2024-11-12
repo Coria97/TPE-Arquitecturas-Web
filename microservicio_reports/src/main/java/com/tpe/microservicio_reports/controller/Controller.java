@@ -3,6 +3,7 @@ package com.tpe.microservicio_reports.controller;
 import com.tpe.microservicio_reports.dto.ReportDTO;
 import com.tpe.microservicio_reports.entity.Maintenance;
 import com.tpe.microservicio_reports.service.ReportsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -18,6 +19,7 @@ configurarse para incluir (o no) los tiempos de pausa.
 @RequestMapping("/api/report")
 public class Controller {
 
+    @Autowired
     private ReportsService service;
 
     /*
