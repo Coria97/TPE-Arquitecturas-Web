@@ -8,6 +8,7 @@ import java.util.List;
 @FeignClient(name="microservicio_stops")
 public interface StopsFeignClient {
 
-    @GetMapping("/api/scooter")
+    @GetMapping("/api/scooterUsage")
     List<ReportScooterUsageDTO> getScootersUsage();
+
 }

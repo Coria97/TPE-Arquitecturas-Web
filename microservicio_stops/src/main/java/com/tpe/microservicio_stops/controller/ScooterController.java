@@ -16,10 +16,11 @@ public class ScooterController {
     @Autowired
     private ScooterService scooterService;
 
-    @GetMapping("/usage")
+    @GetMapping("/scooterUsage")
     public ResponseEntity<List<ScooterUsageDTO>> getScootersUsage(){
         return ResponseEntity.status(HttpStatus.OK).body(scooterService.getScootersUsage());
     }
+
 
 
 }

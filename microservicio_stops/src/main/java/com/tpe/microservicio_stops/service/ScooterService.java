@@ -12,7 +12,9 @@ public class ScooterService {
     @Autowired
     private ScooterRepository scooterRepository;
 
-    public List<ScooterUsageDTO>getScootersUsage(){
+    public List<ScooterUsageDTO> getScootersUsage() {
         return scooterRepository.getScootersUsage();
     }
+
+
 }
