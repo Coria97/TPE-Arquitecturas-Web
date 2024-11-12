@@ -27,7 +27,6 @@ public class User {
     private Rol rol;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<UserAccount> userAccounts;
-
     @Transient
     private List<Account> accounts;
 

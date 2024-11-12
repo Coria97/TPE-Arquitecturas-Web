@@ -18,7 +18,8 @@ public class Account {
     private String mpAccount;
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private List<UserAccount> userAccounts;
-
+    @Column
+    private boolean active;
     @Transient
     private List<User> users;
 

@@ -13,8 +13,11 @@ public class Scooter {
     private float km;
     @Column
     private float time;
+
     @Column
+    //Esta variable representa el tiempo total en pausa de todos los viajes. Por cada entrada en travelStop se sumara el tiempo de pausa.
     private float timeOut;
+
     @Column
     private String state;
     @ManyToOne (fetch = FetchType.EAGER)
