@@ -14,15 +14,15 @@ configurarse para incluir (o no) los tiempos de pausa.
 * */
 
 @RestController
-@RequestMapping("/api/report")
+@RequestMapping("/api/reports")
 public class ReportsController {
 
     @Autowired
     private ReportsService reportsService;
 
-    @GetMapping("/maintence/scooter")
+    @GetMapping("/scooter/usage")
     public ResponseEntity<List<ReportScooterUsageDTO>> scooterUsageReport(@RequestParam("timeOut") boolean timeOut){
-
+        System.out.println("entro al controller report");
         List<ReportScooterUsageDTO> reportScooter = this.reportsService.getUsageScooters(timeOut);
         if(reportScooter.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -32,7 +32,7 @@ public class ReportsController {
 
     @GetMapping("/admin/scooter")
     public ResponseEntity<?> getScooters(@RequestParam("year") int year, @RequestParam("minTravels") int minTravels) {
-        // Aca en un futuro va a consumir esto con un tokenJWT y va a validar que sea un admin
+        // to do: Aca en un futuro va a consumir esto con un tokenJWT y va a validar que sea un admin
         List<Integer> reportScooter = reportsService.getScootersByMinTravels(year, minTravels);
         return ResponseEntity.ok(reportScooter);
 

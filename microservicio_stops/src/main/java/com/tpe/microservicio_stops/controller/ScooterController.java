@@ -17,7 +17,7 @@ public class ScooterController {
     @Autowired
     private ScooterService scooterService;
 
-    @GetMapping("/scooterUsage")
+    @GetMapping("/usage")
     public ResponseEntity<List<ScooterUsageDTO>> getScootersUsage(){
         return ResponseEntity.status(HttpStatus.OK).body(scooterService.getScootersUsage());
     }
