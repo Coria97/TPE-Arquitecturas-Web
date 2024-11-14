@@ -1,6 +1,6 @@
 spring:
   application:
-    name: microservicio_travels
+    name: microservicio-travels
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

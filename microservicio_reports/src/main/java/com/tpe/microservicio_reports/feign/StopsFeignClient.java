@@ -5,10 +5,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
-@FeignClient(name="microservicio_stops")
+@FeignClient(name="microservicio-stops")
 public interface StopsFeignClient {
 
-    @GetMapping("/api/scooterUsage")
+    @GetMapping("/api/scooter/scooterUsage")
     List<ReportScooterUsageDTO> getScootersUsage();
 
 }

@@ -1,6 +1,5 @@
 package com.tpe.microservicio_travels.service;
 
-import com.netflix.discovery.converters.Auto;
 import com.tpe.microservicio_travels.repository.TravelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -7,6 +7,6 @@ public class UserUtils {
     private UserRepository userRepository;
 
     public boolean isAdmin(int userId){
-        return userRepository.getRol(userId) == Rol.ADMIN;
+        return userRepository.getRol(userId).equalsIgnoreCase(Rol.ADMIN.toString());
     }
 }

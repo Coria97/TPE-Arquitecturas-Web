@@ -1,6 +1,6 @@
 spring:
   application:
-    name: microservicio_stops
+    name: microservicio-stops
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

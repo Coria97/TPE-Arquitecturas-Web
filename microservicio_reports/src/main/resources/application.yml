@@ -1,6 +1,6 @@
 spring:
   application:
-    name: microservicio_reports
+    name: microservicio-reports
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
