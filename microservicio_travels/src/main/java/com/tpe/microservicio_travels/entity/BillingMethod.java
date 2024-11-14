@@ -10,7 +10,7 @@ import java.util.List;
 public class BillingMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column
     private float price;
     @Column

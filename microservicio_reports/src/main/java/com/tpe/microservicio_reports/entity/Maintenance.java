@@ -10,7 +10,7 @@ import java.util.Date;
 public class Maintenance {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column
     private String state;
     @Column

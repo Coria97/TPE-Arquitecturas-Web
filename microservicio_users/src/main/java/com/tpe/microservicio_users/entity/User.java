@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column
     private String firstName;
     @Column

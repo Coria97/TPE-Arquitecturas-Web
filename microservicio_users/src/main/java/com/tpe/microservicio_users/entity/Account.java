@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column
     private float balance;
     @Column

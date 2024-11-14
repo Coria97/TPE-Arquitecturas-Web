@@ -9,10 +9,9 @@ import java.sql.Timestamp;
 @Data
 @Entity
 public class TravelStop {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column
     private Timestamp start;
     @Column

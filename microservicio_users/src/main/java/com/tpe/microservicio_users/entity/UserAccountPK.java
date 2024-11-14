@@ -9,6 +9,6 @@ import java.io.Serializable;
 @Data
 @Embeddable
 public class UserAccountPK implements Serializable {
-    private int userId;
-    private int accountId;
+    private Long userId;
+    private Long accountId;
 }

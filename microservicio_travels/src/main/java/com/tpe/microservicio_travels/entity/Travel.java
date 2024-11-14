@@ -11,7 +11,7 @@ import java.util.List;
 public class Travel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column
     private Date startDate;
     @Column
