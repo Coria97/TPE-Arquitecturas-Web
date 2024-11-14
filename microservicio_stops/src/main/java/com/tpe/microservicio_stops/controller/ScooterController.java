@@ -1,6 +1,4 @@
 package com.tpe.microservicio_stops.controller;
-
-
 import com.tpe.microservicio_stops.dto.ScooterUsageDTO;
 import com.tpe.microservicio_stops.entity.Scooter;
 import com.tpe.microservicio_stops.service.ScooterService;
@@ -20,6 +18,11 @@ public class ScooterController {
     @GetMapping("/usage")
     public ResponseEntity<List<ScooterUsageDTO>> getScootersUsage(){
         return ResponseEntity.status(HttpStatus.OK).body(scooterService.getScootersUsage());
+    }
+
+    @GetMapping("/state")
+    public ResponseEntity<?> getScootersStates(){
+        return ResponseEntity.status(HttpStatus.OK).body(scooterService.getScooterStates());
     }
 
 
