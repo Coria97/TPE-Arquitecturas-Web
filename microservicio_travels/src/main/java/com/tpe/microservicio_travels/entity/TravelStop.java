@@ -17,5 +17,6 @@ public class TravelStop {
     @Column
     private Timestamp end;
     @ManyToOne(fetch = FetchType.LAZY)
-    private Travel travels;
+    @JoinColumn(name = "travel_id")
+    private Travel travel;
 }

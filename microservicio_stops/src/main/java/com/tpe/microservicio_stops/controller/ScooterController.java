@@ -1,5 +1,6 @@
 package com.tpe.microservicio_stops.controller;
 import com.tpe.microservicio_stops.dto.ScooterStatesDTO;
+import com.tpe.microservicio_stops.dto.ScooterStatsUpdateDTO;
 import com.tpe.microservicio_stops.dto.ScooterUsageDTO;
 import com.tpe.microservicio_stops.entity.Scooter;
 import com.tpe.microservicio_stops.service.ScooterService;
@@ -63,13 +64,18 @@ public class ScooterController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    // Obtener todos (GET)
     @GetMapping
     public ResponseEntity<List<Scooter>> getAllScooters() {
         List<Scooter> scooters = scooterService.getAllScooters();
         return new ResponseEntity<>(scooters, HttpStatus.OK);
     }
 
+    @PutMapping("/{id}/stats")
+    public ResponseEntity<Scooter> updateStatsScooter(@PathVariable Long id, @RequestBody ScooterStatsUpdateDTO scooterStatsUpdateDTO) {
+        Scooter updatedScooter = scooterService.updateStatsScooter(id, scooterStatsUpdateDTO);
+
+        return ResponseEntity.ok(updatedScooter);
+    }
 
 
 }

@@ -17,5 +17,7 @@ public class Maintenance {
     private Date dateMaintenance;
     @Column
     private String observation;
+    @Column
+    private Long scooterId;
 
 }
