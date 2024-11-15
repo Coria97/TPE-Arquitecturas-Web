@@ -24,6 +24,8 @@ public class UserController {
     @Autowired
 
     private UserUtils userUtils;
+    @Autowired
+    private UserRepository userRepository;
 
     @PostMapping("/{userId}/account/{accountId}")
     public ResponseEntity<String> linkUserToAccount(@PathVariable Long userId, @PathVariable Long accountId) {
@@ -45,6 +47,11 @@ public class UserController {
         }
         else
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No tiene permisos");
+    }
+
+    @GetMapping("{userId}/rol")
+    public ResponseEntity<?> getRol(@PathVariable int userId) {
+        return ResponseEntity.status(HttpStatus.OK).body(userRepository.getRol(userId));
     }
 
     @GetMapping

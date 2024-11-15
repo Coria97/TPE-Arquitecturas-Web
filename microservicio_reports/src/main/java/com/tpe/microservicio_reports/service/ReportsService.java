@@ -4,7 +4,6 @@ import com.tpe.microservicio_reports.dto.ReportScooterUsageDTO;
 import com.tpe.microservicio_reports.feign.StopsFeignClient;
 
 
-import com.tpe.microservicio_reports.feign.TravelFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +16,6 @@ public class ReportsService {
     @Autowired
     private StopsFeignClient stopsFeignClient;
 
-    @Autowired
-    private TravelFeignClient travelFeignClient;
-
     public List<ReportScooterUsageDTO> getUsageScooters(boolean timeOut){
         List<ReportScooterUsageDTO> reportUsageScooters = stopsFeignClient.getScootersUsage();
         if(!timeOut){
@@ -29,9 +25,5 @@ public class ReportsService {
             }
         }
         return reportUsageScooters;
-    }
-
-    public List<Integer> getScootersByMinTravels(int year, int minTravels){
-        return travelFeignClient.getScootersByMinTravels(year, minTravels);
     }
 }

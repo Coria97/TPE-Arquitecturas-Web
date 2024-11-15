@@ -48,7 +48,6 @@ public class BillingMethodController {
             BillingMethod billingMethod = billingMethodData.get();
             billingMethod.setPrice(billingMethodDetails.getPrice());
             billingMethod.setType(billingMethodDetails.getType());
-            // Nota: Si deseas actualizar la lista de `billings`, agrégalo aquí también.
 
             return new ResponseEntity<>(billingMethodService.save(billingMethod), HttpStatus.OK);
         } else {

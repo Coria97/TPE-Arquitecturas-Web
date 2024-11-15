@@ -3,6 +3,7 @@ package com.tpe.microservicio_travels.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -14,11 +15,16 @@ public class Billing {
     @Column
     private int amount;
     @Column
+    private Date billingDate;
+    @Column
     private int amountDebt;
     @Column
     private String state;
     @Column
-    private int accountId;
-    @ManyToOne(fetch = FetchType.LAZY)
+    private Long accountId;
+    @ManyToOne
     private BillingMethod billingMethod;
+    @OneToOne
+    @JoinColumn(name = "travel_id")
+    private Travel travel;
 }

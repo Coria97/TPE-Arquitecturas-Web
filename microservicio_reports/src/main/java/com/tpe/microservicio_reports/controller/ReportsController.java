@@ -29,13 +29,4 @@ public class ReportsController {
         }
         return ResponseEntity.ok(reportScooter);
     }
-
-    @GetMapping("/admin/scooter")
-    public ResponseEntity<?> getScooters(@RequestParam("year") int year, @RequestParam("minTravels") int minTravels) {
-        // to do: Aca en un futuro va a consumir esto con un tokenJWT y va a validar que sea un admin
-        List<Integer> reportScooter = reportsService.getScootersByMinTravels(year, minTravels);
-        return ResponseEntity.ok(reportScooter);
-
-    }
-
 }

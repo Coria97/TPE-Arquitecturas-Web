@@ -28,5 +28,6 @@ public class Travel {
     private int userId;
     @OneToMany
     private List<TravelStop> stops;
-
+    @OneToOne(mappedBy = "travel")
+    private Billing billing;
 }
