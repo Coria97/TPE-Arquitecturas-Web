@@ -7,7 +7,6 @@ import java.util.List;
 
 @FeignClient(name="microservicio-stops",  url = "http://localhost:8081")
 public interface StopsFeignClient {
-
     @GetMapping("/api/scooters/usage")
     List<ReportScooterUsageDTO> getScootersUsage();
 

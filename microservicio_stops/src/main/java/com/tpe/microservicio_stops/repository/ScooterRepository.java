@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ScooterRepository extends JpaRepository<Scooter, Long> {
-
-    @Query("SELECT s.id, s.km, s.timeOut FROM Scooter s")
+    @Query("SELECT new com.tpe.microservicio_stops.dto.ScooterUsageDTO(s.id, s.km, s.timeOut) FROM Scooter s")
     public List<ScooterUsageDTO> getScootersUsage();
 }

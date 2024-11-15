@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReportScooterUsageDTO {
     @JsonProperty("id")
-    private int id;
+    private Long id;
 
     @JsonProperty("km")
     private float km;
