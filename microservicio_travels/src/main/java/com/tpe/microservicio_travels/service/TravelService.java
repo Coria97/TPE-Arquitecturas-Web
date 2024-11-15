@@ -2,6 +2,7 @@ package com.tpe.microservicio_travels.service;
 
 import com.tpe.microservicio_travels.dto.TravelsYearDTO;
 import com.tpe.microservicio_travels.repository.TravelRepository;
+import com.tpe.microservicio_travels.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tpe.microservicio_travels.entity.Travel;
@@ -14,7 +15,12 @@ public class TravelService {
     @Autowired
     private TravelRepository travelRepository;
 
-    public List<TravelsYearDTO> getScootersByMinTravels(int year, int minTravels){
+    @Autowired
+    private UserUtil userUtil;
+
+    public List<TravelsYearDTO> getScootersByMinTravels(Long userId, int year, int minTravels){
+        if (!userUtil.isAdmin(userId))
+            return null;
         return travelRepository.getScootersByMinTravels(year, minTravels);
     }
 
