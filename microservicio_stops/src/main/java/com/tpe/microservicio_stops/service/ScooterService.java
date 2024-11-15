@@ -25,7 +25,7 @@ public class ScooterService {
     }
 
     public List<ScooterStatesDTO> getScooterStates(Long userId) {
-        if (!userUtil.getUserRol(userId))
+        if (!userUtil.isAdmin(userId))
             return null;
         return scooterRepository.getScooterStates();
     }

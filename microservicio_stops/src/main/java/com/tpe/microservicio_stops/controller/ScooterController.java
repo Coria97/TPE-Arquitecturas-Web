@@ -21,7 +21,7 @@ public class ScooterController {
         return ResponseEntity.status(HttpStatus.OK).body(scooterService.getScootersUsage());
     }
 
-    @GetMapping("/state")
+    @GetMapping("/admin/state")
     public ResponseEntity<?> getScootersStates(@RequestParam Long userId){
         List<ScooterStatesDTO> response = scooterService.getScooterStates(userId);
         if (response == null)

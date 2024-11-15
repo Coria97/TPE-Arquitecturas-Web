@@ -20,7 +20,7 @@ public class TravelController {
     private TravelService travelService;
 
     @GetMapping("/admin/scooters")
-    public ResponseEntity<?> getScootersByMinTravels(@RequestParam Long userId, @RequestParam("year") int year,  @RequestParam("minTravels") int minTravels){
+    public ResponseEntity<?> getScootersByMinTravels(@RequestParam ("userId") Long userId, @RequestParam("year") int year,  @RequestParam("minTravels") int minTravels){
         List<TravelsYearDTO> travelsYearDTOS = travelService.getScootersByMinTravels(userId, year,minTravels);
         if (travelsYearDTOS == null)
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No tiene los permisos necesarios");
