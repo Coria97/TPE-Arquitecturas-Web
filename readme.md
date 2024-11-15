@@ -13,6 +13,9 @@ Este proyecto implementa una arquitectura de microservicios utilizando Spring Bo
 - **Docker**: Cada microservicio se ejecuta en su propio contenedor Docker, lo cual facilita la implementación y el despliegue.
 - **Postman**: Herramienta utilizada para probar y verificar los servicios REST.
 
+## Modelo Entidad-Relacion para microservicios
+![DiagramaEntidadRelacion.png](DiagramaEntidadRelacion.png)
+
 ## Estructura de Microservicios
 
 - **EurekaServiceApplication**: Servidor de descubrimiento que permite a los microservicios registrarse y descubrirse entre sí.
