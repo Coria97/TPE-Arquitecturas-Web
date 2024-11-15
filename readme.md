@@ -27,7 +27,7 @@ Cada microservicio tiene su propia base de datos y configuración de Docker para
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/Coria97/tp3-arquitecturas-web.git
+   git clone https://github.com/Coria97/TPE-Arquitecturas-Web.git
 
 3. Ejecuta el script para levantar todos los contenedores Docker:
    Existen dos uno para windows otro para ubuntu:
@@ -38,7 +38,7 @@ Este script ejecutará todos los archivos `docker-compose.yml` necesarios para l
 
 4. Una vez que los servicios estén en ejecución, verifica que todos los microservicios estén registrados en Eureka y comunicándose correctamente.
 
-5. Si necesitas probar los endpoints de los microservicios, utiliza la colección de Postman disponible: [Colección de Postman](https://documenter.getpostman.com/view/24114875/2sAXxV4Ufq)
+5. Si necesitas probar los endpoints de los microservicios, utiliza la colección de Postman disponible: [Microservicios-Postman](https://documenter.getpostman.com/view/24114875/2sAY55bduH)
 
 
 ## Información de los Estudiantes
