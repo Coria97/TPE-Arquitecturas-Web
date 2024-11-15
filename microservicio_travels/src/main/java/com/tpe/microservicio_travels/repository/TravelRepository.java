@@ -1,5 +1,6 @@
 package com.tpe.microservicio_travels.repository;
 
+import com.tpe.microservicio_travels.dto.TravelsYearDTO;
 import com.tpe.microservicio_travels.entity.Travel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,12 +13,13 @@ import java.util.List;
 @Repository
 public interface TravelRepository extends JpaRepository<Travel, Long>{
 
-    @Query("SELECT t.scooterId " +
+    @Query("SELECT new com.tpe.microservicio_travels.dto.TravelsYearDTO(t.scooterId, count(t.scooterId)) " +
             "FROM Travel t " +
             "WHERE YEAR(t.startDate) = :year " +
             "GROUP BY t.scooterId " +
             "HAVING count(t.scooterId) > :minTravels")
-    List<Integer> getScootersByMinTravels(@Param("year") int year, @Param("minTravels") int minTravels);
+    List<TravelsYearDTO> getScootersByMinTravels(@Param("year") int year, @Param("minTravels") int minTravels);
+
 }
 
 

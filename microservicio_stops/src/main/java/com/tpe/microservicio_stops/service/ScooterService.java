@@ -1,5 +1,6 @@
 package com.tpe.microservicio_stops.service;
 
+import com.tpe.microservicio_stops.dto.ScooterStatesDTO;
 import com.tpe.microservicio_stops.dto.ScooterUsageDTO;
 import com.tpe.microservicio_stops.entity.Scooter;
 import com.tpe.microservicio_stops.repository.ScooterRepository;
@@ -18,17 +19,18 @@ public class ScooterService {
         return scooterRepository.getScootersUsage();
     }
 
-    // Alta
+    public List<ScooterStatesDTO> getScooterStates(){
+        return scooterRepository.getScooterStates();
+    }
+
     public Scooter createScooter(Scooter scooter) {
         return scooterRepository.save(scooter);
     }
 
-    // Baja
     public void deleteScooter(Long id) {
         scooterRepository.deleteById(id);
     }
 
-    // Modificación
     public Scooter updateScooter(Long id, Scooter scooter) {
         Optional<Scooter> existingScooter = scooterRepository.findById(id);
         if (existingScooter.isPresent()) {
@@ -41,15 +43,14 @@ public class ScooterService {
             updatedScooter.setStop(scooter.getStop());
             return scooterRepository.save(updatedScooter);
         }
-        return null; // o lanzar una excepción
+        return null;
     }
 
-    // Obtener por ID
+
     public Scooter getScooterById(Long id) {
         return scooterRepository.findById(id).orElse(null);
     }
 
-    // Obtener todos
     public List<Scooter> getAllScooters() {
         return scooterRepository.findAll();
     }

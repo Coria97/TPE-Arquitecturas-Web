@@ -1,6 +1,7 @@
 package com.tpe.microservicio_travels.controller;
 
 
+import com.tpe.microservicio_travels.dto.TravelsYearDTO;
 import com.tpe.microservicio_travels.entity.Travel;
 import com.tpe.microservicio_travels.service.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,12 @@ public class TravelController {
     @Autowired
     private TravelService travelService;
 
-    @GetMapping("/scooters")
-    public ResponseEntity<List<Integer>> getScootersByMinTravels(@RequestParam("year") int year,  @RequestParam("minTravel") int minTravels){
-        return ResponseEntity.status(HttpStatus.OK).body(travelService.getScootersByMinTravels(year, minTravels));
+    @GetMapping("/admin/scooters")
+    public ResponseEntity<?> getScootersByMinTravels(@RequestParam("year") int year,  @RequestParam("minTravels") int minTravels){
+        List<TravelsYearDTO> travelsYearDTOS = travelService.getScootersByMinTravels(year,minTravels);
+        return ResponseEntity.status(HttpStatus.OK).body(travelsYearDTOS);
     }
+
 
     @GetMapping
     public ResponseEntity<List<Travel>> getAllTravels() {
