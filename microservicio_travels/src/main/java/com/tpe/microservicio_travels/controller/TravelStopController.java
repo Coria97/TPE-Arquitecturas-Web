@@ -39,23 +39,7 @@ public class TravelStopController {
         TravelStop newTravelStop = travelStopService.save(travelStop);
         return new ResponseEntity<>(newTravelStop, HttpStatus.CREATED);
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<TravelStop> updateTravelStop(@PathVariable Long id, @RequestBody TravelStop travelStopDetails) {
-        Optional<TravelStop> travelStopData = travelStopService.findById(id);
-
-        if (travelStopData.isPresent()) {
-            TravelStop travelStop = travelStopData.get();
-            travelStop.setStart(travelStopDetails.getStart());
-            travelStop.setEnd(travelStopDetails.getEnd());
-            travelStop.setTravels(travelStopDetails.getTravels());
-
-            return new ResponseEntity<>(travelStopService.save(travelStop), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteTravelStop(@PathVariable Long id) {
         try {
