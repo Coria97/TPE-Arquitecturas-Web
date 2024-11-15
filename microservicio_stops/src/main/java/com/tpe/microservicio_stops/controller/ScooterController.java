@@ -1,4 +1,5 @@
 package com.tpe.microservicio_stops.controller;
+import com.tpe.microservicio_stops.dto.ScooterStatesDTO;
 import com.tpe.microservicio_stops.dto.ScooterUsageDTO;
 import com.tpe.microservicio_stops.entity.Scooter;
 import com.tpe.microservicio_stops.service.ScooterService;
@@ -21,8 +22,11 @@ public class ScooterController {
     }
 
     @GetMapping("/state")
-    public ResponseEntity<?> getScootersStates(){
-        return ResponseEntity.status(HttpStatus.OK).body(scooterService.getScooterStates());
+    public ResponseEntity<?> getScootersStates(@RequestParam Long userId){
+        List<ScooterStatesDTO> response = scooterService.getScooterStates(userId);
+        if (response == null)
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No tiene los permisos necesarios");
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
 

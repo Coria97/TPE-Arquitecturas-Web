@@ -3,7 +3,9 @@ package com.tpe.microservicio_stops.service;
 import com.tpe.microservicio_stops.dto.ScooterStatesDTO;
 import com.tpe.microservicio_stops.dto.ScooterUsageDTO;
 import com.tpe.microservicio_stops.entity.Scooter;
+import com.tpe.microservicio_stops.feign.UserFeignClient;
 import com.tpe.microservicio_stops.repository.ScooterRepository;
+import com.tpe.microservicio_stops.utils.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -15,11 +17,16 @@ public class ScooterService {
     @Autowired
     private ScooterRepository scooterRepository;
 
+    @Autowired
+    private UserUtil userUtil;
+
     public List<ScooterUsageDTO> getScootersUsage() {
         return scooterRepository.getScootersUsage();
     }
 
-    public List<ScooterStatesDTO> getScooterStates(){
+    public List<ScooterStatesDTO> getScooterStates(Long userId) {
+        if (!userUtil.getUserRol(userId))
+            return null;
         return scooterRepository.getScooterStates();
     }
 
