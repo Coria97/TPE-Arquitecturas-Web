@@ -1,9 +1,9 @@
 package com.tpe.microservicio_stops.service;
 
 import com.tpe.microservicio_stops.dto.ScooterStatesDTO;
+import com.tpe.microservicio_stops.dto.ScooterStatsUpdateDTO;
 import com.tpe.microservicio_stops.dto.ScooterUsageDTO;
 import com.tpe.microservicio_stops.entity.Scooter;
-import com.tpe.microservicio_stops.feign.UserFeignClient;
 import com.tpe.microservicio_stops.repository.ScooterRepository;
 import com.tpe.microservicio_stops.utils.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +53,15 @@ public class ScooterService {
         return null;
     }
 
+    public Scooter updateStatsScooter(Long id, ScooterStatsUpdateDTO scooterStatsUpdateDTO) {
+        Scooter scooter = scooterRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Scooter not found"));
+
+        scooter.setKm(scooterStatsUpdateDTO.getKm());
+        scooter.setTimeUsage(scooterStatsUpdateDTO.getTimeUsage());
+
+        return scooterRepository.save(scooter);
+    }
 
     public Scooter getScooterById(Long id) {
         return scooterRepository.findById(id).orElse(null);

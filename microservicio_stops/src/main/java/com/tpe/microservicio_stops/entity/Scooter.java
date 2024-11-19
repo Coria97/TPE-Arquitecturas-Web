@@ -19,6 +19,7 @@ public class Scooter {
     //Esta variable representa el tiempo total en pausa de todos los viajes. Por cada entrada en travelStop se sumara el tiempo de pausa.
     private float timeOut;
     @Column
+    //To do: hacer enum, estado ocupado, disponible o mantenimiento
     private String state;
     @ManyToOne (fetch = FetchType.EAGER)
     private Stop stop;
