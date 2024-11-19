@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 public class Travel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private Date startDate;

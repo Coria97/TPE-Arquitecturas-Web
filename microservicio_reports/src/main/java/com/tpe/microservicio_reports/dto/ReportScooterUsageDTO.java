@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 public class ReportScooterUsageDTO {
@@ -16,5 +17,12 @@ public class ReportScooterUsageDTO {
     @JsonProperty("timeOut")
     private float timeOut;
 
+    public void setTimeOut(float timeOut) {
+        this.timeOut = timeOut;
+    }
+
+    public float getTimeOut() {
+        return this.timeOut;
+    }
 
 }

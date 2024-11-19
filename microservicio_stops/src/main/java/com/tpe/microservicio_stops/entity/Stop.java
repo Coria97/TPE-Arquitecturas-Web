@@ -8,7 +8,7 @@ import lombok.*;
 @Entity
 public class Stop {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String location;

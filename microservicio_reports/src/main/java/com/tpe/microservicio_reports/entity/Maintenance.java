@@ -6,10 +6,12 @@ import lombok.*;
 import java.util.Date;
 
 @Data
+@Getter
+@Setter
 @Entity
 public class Maintenance {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String state;
@@ -19,5 +21,18 @@ public class Maintenance {
     private String observation;
     @Column
     private Long scooterId;
+
+    public String getState() {
+        return state;
+    }
+
+    public Date getDateMaintenance() {
+        return dateMaintenance;
+    }
+
+    public String getObservation() {
+        return observation;
+    }
+
 
 }
