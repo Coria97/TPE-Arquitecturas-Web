@@ -15,6 +15,12 @@ public class StopController {
     @Autowired
     private StopService stopService;
 
+    // {{base-url}}/api/stops/close?x=value&y=value
+    @GetMapping("/close")
+    public ResponseEntity<List<Stop>> getCloseScooters(@RequestParam float x, @RequestParam float y) {
+        List<Stop> stops = this.stopService.getCloseScooters(x, y);
+        return new ResponseEntity<>(stops, HttpStatus.OK);
+    }
     // {{base-url}}/api/stops
     @PostMapping
     public ResponseEntity<Stop> createStop(@RequestBody Stop stop) {

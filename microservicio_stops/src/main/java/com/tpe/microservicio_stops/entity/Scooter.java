@@ -1,5 +1,7 @@
 package com.tpe.microservicio_stops.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +22,13 @@ public class Scooter {
     @Column
     //To do: hacer enum, estado ocupado, disponible o mantenimiento
     private String state;
-    @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "stop_id")
+    @JsonIgnore
     private Stop stop;
+
+    @JsonInclude
+    public Long getStopId() {
+        return stop != null ? stop.getId() : null;
+    }
 }

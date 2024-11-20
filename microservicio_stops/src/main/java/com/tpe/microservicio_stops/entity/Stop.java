@@ -15,7 +15,7 @@ public class Stop {
     @Column
     private int slots;
     @Column
-    private boolean full;
-    @OneToMany (fetch = FetchType.LAZY)
+    private boolean isEmpty;
+    @OneToMany(mappedBy = "stop", fetch = FetchType.LAZY)
     private List<Scooter> scooterList;
 }
