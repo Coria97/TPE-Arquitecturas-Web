@@ -1,5 +1,6 @@
 package com.tpe.microservicio_travels.controller;
 
+import com.netflix.discovery.converters.Auto;
 import com.tpe.microservicio_travels.dto.BillingResponseDTO;
 import com.tpe.microservicio_travels.dto.MonthBillingDTO;
 import com.tpe.microservicio_travels.entity.Billing;
@@ -15,13 +16,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/billings")
 public class BillingController {
-
-    private final BillingService billingService;
-
     @Autowired
-    public BillingController(BillingService billingService) {
-        this.billingService = billingService;
-    }
+    private BillingService billingService;
 
     @GetMapping("/admin/bills")
     public ResponseEntity<?> getBillingByMonthRange(@RequestParam Long userId, @RequestParam int year, @RequestParam int startMonth, @RequestParam int endMonth) {

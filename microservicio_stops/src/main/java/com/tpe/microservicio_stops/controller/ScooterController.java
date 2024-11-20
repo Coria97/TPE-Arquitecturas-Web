@@ -13,38 +13,30 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/scooters")
 public class ScooterController {
-
     @Autowired
     private ScooterService scooterService;
 
+    // {{base-url}}/api/scooters/usage
     @GetMapping("/usage")
     public ResponseEntity<List<ScooterUsageDTO>> getScootersUsage(){
         return ResponseEntity.status(HttpStatus.OK).body(scooterService.getScootersUsage());
     }
 
-    @GetMapping("/admin/state")
-    public ResponseEntity<?> getScootersStates(@RequestParam Long userId){
-        List<ScooterStatesDTO> response = scooterService.getScooterStates(userId);
-        if (response == null)
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No tiene los permisos necesarios");
-        return ResponseEntity.status(HttpStatus.OK).body(response);
-    }
-
-
+    // {{base-url}}/api/scooters
     @PostMapping
     public ResponseEntity<Scooter> createScooter(@RequestBody Scooter scooter) {
         Scooter createdScooter = scooterService.createScooter(scooter);
         return new ResponseEntity<>(createdScooter, HttpStatus.CREATED);
     }
 
-
+    // {{base-url}}/api/scooters/{id}
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteScooter(@PathVariable Long id) {
         scooterService.deleteScooter(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
+    // {{base-url}}/api/scooters/{id}
     @PutMapping("/{id}")
     public ResponseEntity<Scooter> updateScooter(@PathVariable Long id, @RequestBody Scooter scooter) {
         Scooter updatedScooter = scooterService.updateScooter(id, scooter);
@@ -54,7 +46,7 @@ public class ScooterController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
+    // {{base-url}}/api/scooters/{id}
     @GetMapping("/{id}")
     public ResponseEntity<Scooter> getScooterById(@PathVariable Long id) {
         Scooter scooter = scooterService.getScooterById(id);
@@ -64,6 +56,7 @@ public class ScooterController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    // {{base-url}}/api/scooters
     @GetMapping
     public ResponseEntity<List<Scooter>> getAllScooters() {
         List<Scooter> scooters = scooterService.getAllScooters();

@@ -13,13 +13,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/travel-stops")
 public class TravelStopController {
-
-    private final TravelStopService travelStopService;
-
     @Autowired
-    public TravelStopController(TravelStopService travelStopService) {
-        this.travelStopService = travelStopService;
-    }
+    private TravelStopService travelStopService;
 
     @GetMapping
     public ResponseEntity<List<TravelStop>> getAllTravelStops() {

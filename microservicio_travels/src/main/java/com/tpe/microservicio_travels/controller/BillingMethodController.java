@@ -13,13 +13,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/billing-methods")
 public class BillingMethodController {
-
-    private final BillingMethodService billingMethodService;
-
     @Autowired
-    public BillingMethodController(BillingMethodService billingMethodService) {
-        this.billingMethodService = billingMethodService;
-    }
+    private BillingMethodService billingMethodService;
 
     @GetMapping
     public ResponseEntity<List<BillingMethod>> getAllBillingMethods() {

@@ -22,11 +22,11 @@ public class UserController {
     @Autowired
     private UserAccountService userAccountService;
     @Autowired
-
     private UserUtils userUtils;
     @Autowired
     private UserRepository userRepository;
 
+    // {{base-url}}/api/users/{userId}/account/{accountId}
     @PostMapping("/{userId}/account/{accountId}")
     public ResponseEntity<String> linkUserToAccount(@PathVariable Long userId, @PathVariable Long accountId) {
         try {
@@ -37,6 +37,7 @@ public class UserController {
         }
     }
 
+    // {{base-url}}/api/users/{userId}/account/{accountId}
     @DeleteMapping("/{userId}/account/{accountId}")
     public ResponseEntity<String> deleteAccount(@PathVariable int userId, @PathVariable int accountId) {
         if (userUtils.isAdmin(userId)){
@@ -49,11 +50,13 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No tiene permisos");
     }
 
+    // {{base-url}}/api/users/{userId}/rol
     @GetMapping("{userId}/rol")
     public ResponseEntity<?> getRol(@PathVariable int userId) {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.getRol(userId));
     }
 
+    // {{base-url}}/api/users
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
@@ -66,6 +69,7 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // {{base-url}}/api/users
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
@@ -81,6 +85,7 @@ public class UserController {
         }
     }
 
+    // {{base-url}}/api/users
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);

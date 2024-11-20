@@ -15,7 +15,6 @@ import java.util.Optional;
 
 @Service
 public class ScooterService {
-
     @Autowired
     private ScooterRepository scooterRepository;
     @Autowired
@@ -25,12 +24,6 @@ public class ScooterService {
 
     public List<ScooterUsageDTO> getScootersUsage() {
         return scooterRepository.getScootersUsage();
-    }
-
-    public List<ScooterStatesDTO> getScooterStates(Long userId) {
-        if (!userUtil.isAdmin(userId))
-            return null;
-        return scooterRepository.getScooterStates();
     }
 
     public Scooter createScooter(Scooter scooter) {
@@ -79,6 +72,4 @@ public class ScooterService {
     public List<Scooter> getAllScooters() {
         return scooterRepository.findAll();
     }
-
-
 }

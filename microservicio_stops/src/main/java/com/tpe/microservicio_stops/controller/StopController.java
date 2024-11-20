@@ -12,24 +12,24 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/stops")
 public class StopController {
-
     @Autowired
     private StopService stopService;
 
-
+    // {{base-url}}/api/stops
     @PostMapping
     public ResponseEntity<Stop> createStop(@RequestBody Stop stop) {
         Stop createdStop = stopService.createStop(stop);
         return new ResponseEntity<>(createdStop, HttpStatus.CREATED);
     }
 
-
+    // {{base-url}}/api/stops/{id}
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStop(@PathVariable Long id) {
         stopService.deleteStop(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    // {{base-url}}/api/stops/{id}
     @PutMapping("/{id}")
     public ResponseEntity<Stop> updateStop(@PathVariable Long id, @RequestBody Stop stop) {
         Stop updatedStop = stopService.updateStop(id, stop);
@@ -39,7 +39,7 @@ public class StopController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
+    // {{base-url}}/api/stops/{id}
     @GetMapping("/{id}")
     public ResponseEntity<Stop> getStopById(@PathVariable Long id) {
         Stop stop = stopService.getStopById(id);
@@ -49,7 +49,7 @@ public class StopController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
+    // {{base-url}}/api/stops/
     @GetMapping
     public ResponseEntity<List<Stop>> getAllStops() {
         List<Stop> stops = stopService.getAllStops();
