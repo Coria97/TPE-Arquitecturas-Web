@@ -5,7 +5,6 @@ import com.tpe.microservicio_stops.dto.ScooterUsageDTO;
 import com.tpe.microservicio_stops.repository.ScooterRepository;
 import com.tpe.microservicio_stops.repository.StopRepository;
 import com.tpe.microservicio_stops.service.AdminService;
-import com.tpe.microservicio_stops.utils.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

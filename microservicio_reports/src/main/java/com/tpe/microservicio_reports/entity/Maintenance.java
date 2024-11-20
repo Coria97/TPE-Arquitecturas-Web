@@ -1,13 +1,14 @@
 package com.tpe.microservicio_reports.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 
 import java.util.Date;
 
 @Data
-@Getter
-@Setter
 @Entity
 public class Maintenance {
     @Id
@@ -21,18 +22,4 @@ public class Maintenance {
     private String observation;
     @Column
     private Long scooterId;
-
-    public String getState() {
-        return state;
-    }
-
-    public Date getDateMaintenance() {
-        return dateMaintenance;
-    }
-
-    public String getObservation() {
-        return observation;
-    }
-
-
 }

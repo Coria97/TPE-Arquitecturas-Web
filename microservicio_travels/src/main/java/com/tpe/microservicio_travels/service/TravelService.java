@@ -10,7 +10,6 @@ import com.tpe.microservicio_travels.repository.BillingMethodRepository;
 import com.tpe.microservicio_travels.repository.BillingRepository;
 import com.tpe.microservicio_travels.repository.TravelRepository;
 import com.tpe.microservicio_travels.repository.TravelStopRepository;
-import com.tpe.microservicio_travels.util.UserUtil;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,8 +33,6 @@ public class TravelService {
     @Autowired
     private TravelStopRepository travelStopRepository;
     @Autowired
-    private UserUtil userUtil;
-    @Autowired
     private ScooterFeignClient scooterFeignClient;
     @Autowired
     private BillingMethodRepository billingMethodRepository;
@@ -43,8 +40,6 @@ public class TravelService {
     private BillingRepository billingRepository;
 
     public List<TravelsYearDTO> getScootersByMinTravels(Long userId, int year, int minTravels){
-        if (!userUtil.isAdmin(userId))
-            return null;
         return travelRepository.getScootersByMinTravels(year, minTravels);
     }
 

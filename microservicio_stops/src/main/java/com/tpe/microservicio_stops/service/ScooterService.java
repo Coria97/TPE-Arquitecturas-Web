@@ -7,7 +7,6 @@ import com.tpe.microservicio_stops.entity.Scooter;
 import com.tpe.microservicio_stops.entity.Stop;
 import com.tpe.microservicio_stops.repository.ScooterRepository;
 import com.tpe.microservicio_stops.repository.StopRepository;
-import com.tpe.microservicio_stops.utils.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -17,8 +16,6 @@ import java.util.Optional;
 public class ScooterService {
     @Autowired
     private ScooterRepository scooterRepository;
-    @Autowired
-    private UserUtil userUtil;
     @Autowired
     private StopRepository stopRepository;
 

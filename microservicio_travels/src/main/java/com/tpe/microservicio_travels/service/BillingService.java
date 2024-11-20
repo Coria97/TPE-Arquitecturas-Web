@@ -6,7 +6,6 @@ import com.tpe.microservicio_travels.entity.Billing;
 import com.tpe.microservicio_travels.entity.BillingMethod;
 import com.tpe.microservicio_travels.repository.BillingMethodRepository;
 import com.tpe.microservicio_travels.repository.BillingRepository;
-import com.tpe.microservicio_travels.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,13 +22,9 @@ public class BillingService {
     @Autowired
     private BillingMethodRepository billingMethodRepository;
 
-    @Autowired
-    private UserUtil userUtil;
+
 
     public BillingResponseDTO getBillingByMonthRange(Long userId, int year, int startMonth, int endMonth){
-        if (!userUtil.isAdmin(userId))
-            return null;
-
         List<MonthBillingDTO> billingList = billingRepository.getBillingByMonthRange(year, startMonth, endMonth);
         double total = billingList.stream()
                 .mapToDouble(MonthBillingDTO::getAmount)

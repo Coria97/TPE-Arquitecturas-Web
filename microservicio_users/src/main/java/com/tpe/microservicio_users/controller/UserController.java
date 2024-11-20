@@ -4,7 +4,6 @@ import com.tpe.microservicio_users.entity.UserAccount;
 import com.tpe.microservicio_users.repository.UserRepository;
 import com.tpe.microservicio_users.service.UserAccountService;
 import com.tpe.microservicio_users.service.UserService;
-import com.tpe.microservicio_users.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,38 +21,32 @@ public class UserController {
     @Autowired
     private UserAccountService userAccountService;
     @Autowired
-    private UserUtils userUtils;
-    @Autowired
     private UserRepository userRepository;
 
-    // {{base-url}}/api/users/{userId}/account/{accountId}
-    @PostMapping("/{userId}/account/{accountId}")
-    public ResponseEntity<String> linkUserToAccount(@PathVariable Long userId, @PathVariable Long accountId) {
+    // {{base-url}}/api/users/{id}/account/{accountId}
+    @PostMapping("/{id}/account/{accountId}")
+    public ResponseEntity<String> linkUserToAccount(@PathVariable Long id, @PathVariable Long accountId) {
         try {
-            UserAccount userAccount = userAccountService.linkUserToAccount(userId, accountId);
+            UserAccount userAccount = userAccountService.linkUserToAccount(id, accountId);
             return new ResponseEntity<>("Cuenta vinculada exitosamente.", HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>("Fallo al vincular la cuenta: " + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
-    // {{base-url}}/api/users/{userId}/account/{accountId}
-    @DeleteMapping("/{userId}/account/{accountId}")
-    public ResponseEntity<String> deleteAccount(@PathVariable int userId, @PathVariable int accountId) {
-        if (userUtils.isAdmin(userId)){
-            if (userService.deleteAccount(accountId))
+    // {{base-url}}/api/users/{id}/account/{accountId}
+    @DeleteMapping("/{id}/account/{accountId}")
+    public ResponseEntity<String> deleteAccount(@PathVariable long id, @PathVariable long accountId) {
+            if (userService.deleteAccount(id, accountId))
                 return ResponseEntity.status(HttpStatus.OK).body("Cuenta dada de baja");
-            else
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cuenta no dada de baja");
-        }
-        else
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No tiene permisos");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cuenta no dada de baja");
     }
 
-    // {{base-url}}/api/users/{userId}/rol
-    @GetMapping("{userId}/rol")
-    public ResponseEntity<?> getRol(@PathVariable int userId) {
-        return ResponseEntity.status(HttpStatus.OK).body(userRepository.getRol(userId));
+    // {{base-url}}/api/users/{id}/rol
+    @GetMapping("{id}/rol")
+    //to do: borrar
+    public ResponseEntity<?> getRol(@PathVariable int id) {
+        return ResponseEntity.status(HttpStatus.OK).body(userRepository.getRol(id));
     }
 
     // {{base-url}}/api/users

@@ -1,7 +1,10 @@
 package com.tpe.microservicio_users.service;
 
+import com.tpe.microservicio_users.entity.UserAccountPK;
 import com.tpe.microservicio_users.repository.AccountRepository;
+import com.tpe.microservicio_users.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.tpe.microservicio_users.entity.User;
 import com.tpe.microservicio_users.repository.UserRepository;
@@ -14,13 +17,21 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private AccountRepository accountRepository;
-
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserAccountRepository userAccountRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    public boolean deleteAccount(int accountId){
+
+
+    public boolean deleteAccount(long userId, long accountId){
         try{
-            accountRepository.deleteAccount(accountId);
+            UserAccountPK userAccountPK = new UserAccountPK();
+            userAccountPK.setUserId(userId);
+            userAccountPK.setAccountId(accountId);
+            userAccountRepository.deleteById(userAccountPK);
             return true;
         }
         catch(Exception e){
@@ -37,6 +48,7 @@ public class UserService {
     }
 
     public User createUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 

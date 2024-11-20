@@ -20,7 +20,7 @@ public class ReportsService {
         List<ReportScooterUsageDTO> reportUsageScooters = stopsFeignClient.getScootersUsage();
         if(!timeOut){
             for(ReportScooterUsageDTO rso : reportUsageScooters ){
-                // timeOut es de tipo float y no acepta null, entonces se le pone un valor no valido como -1
+                // timeUsage es de tipo float y no acepta null, entonces se le pone un valor no valido como -1
                 rso.setTimeUsage(-1);
             }
         }
