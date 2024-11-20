@@ -13,7 +13,6 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
-pause
 
 rem Ejecutar los INSERTs desde el archivo SQL en el contenedor MySQL del microservicio_travels
 echo Ejecutando INSERTs en microservicio_reports...
@@ -26,7 +25,6 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
-pause
 
 rem Ejecutar los INSERTs desde el archivo SQL en el contenedor MySQL del microservicio_travels
 echo Ejecutando INSERTs en microservicio_stops...
@@ -39,7 +37,6 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
-pause
 
 rem Ejecutar los INSERTs desde el archivo SQL en el contenedor MySQL del microservicio_travels
 echo Ejecutando INSERTs en microservicio_users...

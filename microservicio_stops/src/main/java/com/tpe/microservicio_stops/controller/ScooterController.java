@@ -70,10 +70,10 @@ public class ScooterController {
         return new ResponseEntity<>(scooters, HttpStatus.OK);
     }
 
+    // {{base-url}}/api/scooters/{id}/stats
     @PutMapping("/{id}/stats")
     public ResponseEntity<Scooter> updateStatsScooter(@PathVariable Long id, @RequestBody ScooterStatsUpdateDTO scooterStatsUpdateDTO) {
         Scooter updatedScooter = scooterService.updateStatsScooter(id, scooterStatsUpdateDTO);
-
         return ResponseEntity.ok(updatedScooter);
     }
 

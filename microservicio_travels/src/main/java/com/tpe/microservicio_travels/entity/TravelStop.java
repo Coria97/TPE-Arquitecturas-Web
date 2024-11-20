@@ -1,5 +1,6 @@
 package com.tpe.microservicio_travels.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import jakarta.persistence.*;
 
@@ -18,5 +19,6 @@ public class TravelStop {
     private Timestamp end;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "travel_id")
+    @JsonIgnore
     private Travel travel;
 }

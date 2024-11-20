@@ -33,20 +33,4 @@ public class TravelStopController {
         return travelStop.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
-    @PostMapping
-    public ResponseEntity<TravelStop> createTravelStop(@RequestBody TravelStop travelStop) {
-        TravelStop newTravelStop = travelStopService.save(travelStop);
-        return new ResponseEntity<>(newTravelStop, HttpStatus.CREATED);
-    }
-    
-    @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteTravelStop(@PathVariable Long id) {
-        try {
-            travelStopService.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }

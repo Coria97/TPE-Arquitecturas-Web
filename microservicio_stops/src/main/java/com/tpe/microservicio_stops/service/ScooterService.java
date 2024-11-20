@@ -4,7 +4,9 @@ import com.tpe.microservicio_stops.dto.ScooterStatesDTO;
 import com.tpe.microservicio_stops.dto.ScooterStatsUpdateDTO;
 import com.tpe.microservicio_stops.dto.ScooterUsageDTO;
 import com.tpe.microservicio_stops.entity.Scooter;
+import com.tpe.microservicio_stops.entity.Stop;
 import com.tpe.microservicio_stops.repository.ScooterRepository;
+import com.tpe.microservicio_stops.repository.StopRepository;
 import com.tpe.microservicio_stops.utils.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +18,10 @@ public class ScooterService {
 
     @Autowired
     private ScooterRepository scooterRepository;
-
     @Autowired
     private UserUtil userUtil;
+    @Autowired
+    private StopRepository stopRepository;
 
     public List<ScooterUsageDTO> getScootersUsage() {
         return scooterRepository.getScootersUsage();
@@ -45,7 +48,6 @@ public class ScooterService {
             updatedScooter.setCode(scooter.getCode());
             updatedScooter.setKm(scooter.getKm());
             updatedScooter.setTimeUsage(scooter.getTimeUsage());
-            updatedScooter.setTimeOut(scooter.getTimeOut());
             updatedScooter.setState(scooter.getState());
             updatedScooter.setStop(scooter.getStop());
             return scooterRepository.save(updatedScooter);
@@ -57,8 +59,15 @@ public class ScooterService {
         Scooter scooter = scooterRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Scooter not found"));
 
-        scooter.setKm(scooterStatsUpdateDTO.getKm());
-        scooter.setTimeUsage(scooterStatsUpdateDTO.getTimeUsage());
+        float km = scooter.getKm() + scooterStatsUpdateDTO.getKm();
+        float timeUsage = scooter.getTimeUsage() + scooterStatsUpdateDTO.getTimeUsage();
+        long stopId = scooterStatsUpdateDTO.getStopId();
+        Optional<Stop> newStop = stopRepository.findById(stopId);
+
+        scooter.setKm(km);
+        scooter.setTimeUsage(timeUsage);
+        scooter.setStop(newStop.get());
+        scooter.setState("Available");
 
         return scooterRepository.save(scooter);
     }

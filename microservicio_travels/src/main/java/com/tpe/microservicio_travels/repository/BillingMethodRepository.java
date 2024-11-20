@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 public interface BillingMethodRepository extends JpaRepository<BillingMethod, Long> {
     @Query("SELECT bm FROM BillingMethod bm WHERE bm.type = :type AND :currentDate BETWEEN bm.perdiodStart AND bm.perdiodEnd")
-    Optional<BillingMethod> findActiveBillingMethod(Date currentDate, String type);
+    BillingMethod findActiveBillingMethod(Date currentDate, String type);
 }

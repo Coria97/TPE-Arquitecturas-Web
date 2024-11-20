@@ -11,11 +11,14 @@ public class ScooterStatsUpdateDTO {
     private float km;
     @JsonProperty("timeUsage")
     private float timeUsage;
+    @JsonProperty("stopId")
+    private long stopId;
 
     public ScooterStatsUpdateDTO() {}
 
-    public ScooterStatsUpdateDTO(float km, float timeUsage) {
+    public ScooterStatsUpdateDTO(float km, float timeUsage, long stopId) {
         this.km = km;
         this.timeUsage = timeUsage;
+        this.stopId = stopId;
     }
 }

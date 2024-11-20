@@ -44,38 +44,4 @@ public class BillingController {
         return billing.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
-    @PostMapping
-    public ResponseEntity<Billing> createBilling(@RequestBody Billing billing) {
-        Billing newBilling = billingService.save(billing);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newBilling);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Billing> updateBilling(@PathVariable Long id, @RequestBody Billing billingDetails) {
-        Optional<Billing> billingData = billingService.findById(id);
-
-        if (billingData.isPresent()) {
-            Billing billing = billingData.get();
-            billing.setAmount(billingDetails.getAmount());
-            billing.setAmountDebt(billingDetails.getAmountDebt());
-            billing.setState(billingDetails.getState());
-            billing.setAccountId(billingDetails.getAccountId());
-            billing.setBillingMethod(billingDetails.getBillingMethod());
-
-            return new ResponseEntity<>(billingService.save(billing), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteBilling(@PathVariable Long id) {
-        try {
-            billingService.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }

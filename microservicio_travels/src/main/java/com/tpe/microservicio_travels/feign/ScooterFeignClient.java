@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name="microservicio-stops",  url = "http://localhost:8081")
 public interface ScooterFeignClient {
-    @PutMapping("/api/scooter/{scooterId}/stats")
+    @PutMapping("/api/scooters/{scooterId}/stats")
     void updateStatsScooter(@PathVariable("scooterId") Long scooterId, @RequestBody ScooterStatsUpdateDTO scooterUpdateDTO);
-
 }

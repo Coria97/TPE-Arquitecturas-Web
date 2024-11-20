@@ -14,15 +14,7 @@ public class ReportScooterUsageDTO {
     @JsonProperty("km")
     private float km;
 
-    @JsonProperty("timeOut")
-    private float timeOut;
-
-    public void setTimeOut(float timeOut) {
-        this.timeOut = timeOut;
-    }
-
-    public float getTimeOut() {
-        return this.timeOut;
-    }
+    @JsonProperty("timeUsage")
+    private float timeUsage;
 
 }

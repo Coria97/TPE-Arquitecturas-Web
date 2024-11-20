@@ -44,15 +44,4 @@ public class BillingService {
     public Optional<Billing> findById(Long id) {
         return billingRepository.findById(id);
     }
-
-    public Billing save(Billing billing) {
-        Date currentDate = new Date();
-        Optional<BillingMethod> billingMethod = billingMethodRepository.findActiveBillingMethod(currentDate, "normal");
-        billing.setBillingMethod(billingMethod.get());
-        return billingRepository.save(billing);
-    }
-
-    public void deleteById(Long id) {
-        billingRepository.deleteById(id);
-    }
 }

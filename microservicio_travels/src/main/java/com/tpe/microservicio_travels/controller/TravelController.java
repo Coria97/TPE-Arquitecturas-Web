@@ -3,7 +3,9 @@ package com.tpe.microservicio_travels.controller;
 
 import com.tpe.microservicio_travels.dto.TravelsYearDTO;
 import com.tpe.microservicio_travels.entity.Travel;
+import com.tpe.microservicio_travels.entity.TravelStop;
 import com.tpe.microservicio_travels.service.TravelService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +21,30 @@ public class TravelController {
     @Autowired
     private TravelService travelService;
 
-    @PostMapping("/{travel_id}/finish")
-    public ResponseEntity<?> finishTravel(@PathVariable Long travel_id) {
-        Optional<Travel> finishTravel = travelService.finishTravel(travel_id);
+    @PostMapping("/{travelId}/finish")
+    public ResponseEntity<?> finishTravel(@PathVariable Long travelId) {
+        Travel finishTravel = travelService.finishTravel(travelId);
         return new ResponseEntity<>(finishTravel, HttpStatus.OK);
+    }
+
+    @PostMapping("/{travelId}/stops/start")
+    public ResponseEntity<?> startTravelStops(@PathVariable Long travelId) {
+        try {
+            TravelStop travelStop = travelService.startTravelStops(travelId);
+            return new ResponseEntity<>(travelStop, HttpStatus.CREATED);
+        } catch (EntityNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/{travelId}/stops/{stopsId}/end")
+    public ResponseEntity<?> endTravelStops(@PathVariable Long travelId, @PathVariable Long stopsId) {
+        try {
+            TravelStop travelStop = travelService.endTravelStops(travelId, stopsId);
+            return new ResponseEntity<>(travelStop, HttpStatus.CREATED);
+        } catch (EntityNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/admin/scooters")

@@ -24,8 +24,8 @@ public interface TravelRepository extends JpaRepository<Travel, Long>{
 
     @Modifying
     @Transactional
-    @Query("update Travel t set t.endDate = :endDate, t.state = :state where t.id = :travelId")
-    void finishTravel(@Param("travelId") Long travelId, @Param("endDate") Date endDate, @Param("state") String state);
+    @Query("update Travel t set t.endDate = :endDate, t.state = :state, t.distance = :distance where t.id = :travelId")
+    void finishTravel(@Param("travelId") Long travelId, @Param("endDate") Date endDate, @Param("state") String state, @Param("distance") float distance);
 
 }
 

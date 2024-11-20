@@ -6,4 +6,5 @@ import lombok.Data;
 public class ScooterStatsUpdateDTO {
     private float km;
     private float timeUsage;
+    private long stopId;
 }

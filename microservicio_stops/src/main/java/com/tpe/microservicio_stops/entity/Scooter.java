@@ -12,12 +12,11 @@ public class Scooter {
     @Column
     private String code;
     @Column
+    //Esta variable representa los km de todos los viajes.
     private float km;
+    //Esta variable representa el tiempo total en pausa de todos los viajes.
     @Column
     private float timeUsage;
-    @Column
-    //Esta variable representa el tiempo total en pausa de todos los viajes. Por cada entrada en travelStop se sumara el tiempo de pausa.
-    private float timeOut;
     @Column
     //To do: hacer enum, estado ocupado, disponible o mantenimiento
     private String state;

@@ -22,7 +22,6 @@ public class ReportsController {
 
     @GetMapping("/scooter/usage")
     public ResponseEntity<List<ReportScooterUsageDTO>> scooterUsageReport(@RequestParam("timeOut") boolean timeOut){
-        System.out.println("entro al controller report");
         List<ReportScooterUsageDTO> reportScooter = this.reportsService.getUsageScooters(timeOut);
         if(reportScooter.isEmpty()){
             return ResponseEntity.noContent().build();
