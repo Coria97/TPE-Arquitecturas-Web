@@ -4,6 +4,8 @@ import com.tpe.microservicio_users.entity.UserAccount;
 import com.tpe.microservicio_users.repository.UserRepository;
 import com.tpe.microservicio_users.service.UserAccountService;
 import com.tpe.microservicio_users.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import com.tpe.microservicio_users.entity.User;
 
 import java.util.List;
 
+@Api(tags = "User Management")
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -24,6 +27,7 @@ public class UserController {
     private UserRepository userRepository;
 
     // {{base-url}}/api/users/{id}/account/{accountId}
+    @ApiOperation(value = "se creo un nuevo usuario")
     @PostMapping("/{id}/account/{accountId}")
     public ResponseEntity<String> linkUserToAccount(@PathVariable Long id, @PathVariable Long accountId) {
         try {
@@ -35,6 +39,7 @@ public class UserController {
     }
 
     // {{base-url}}/api/users/{id}/account/{accountId}
+    @ApiOperation(value = "el usuario se elimno con exito")
     @DeleteMapping("/{id}/account/{accountId}")
     public ResponseEntity<String> deleteAccount(@PathVariable long id, @PathVariable long accountId) {
             if (userService.deleteAccount(id, accountId))

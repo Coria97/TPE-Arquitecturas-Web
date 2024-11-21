@@ -43,6 +43,7 @@ public class SecurityConfig {
         http
                 .securityMatcher("/api/**" )
                 .authorizeHttpRequests( authz -> authz
+                        .requestMatchers("/swagger-ui.html", "/v2/api-docs", "/swagger-resources/**", "/webjars/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/users/{id}/account/{accountId}").hasAuthority(Rol.CLIENT.getAuthority())
@@ -55,9 +56,13 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/accounts").hasAuthority(Rol.CLIENT.getAuthority())
                         .requestMatchers(HttpMethod.GET, "/api/users").hasAuthority(Rol.ADMIN.getAuthority())
                         .anyRequest().authenticated()
+
+
                 )
                 .httpBasic( Customizer.withDefaults())
                 .addFilterBefore( new JwtFilter( this.tokenProvider ), UsernamePasswordAuthenticationFilter.class );
         return http.build();
     }
+
+
 }
