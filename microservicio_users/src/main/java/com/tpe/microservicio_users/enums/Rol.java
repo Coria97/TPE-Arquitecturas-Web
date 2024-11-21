@@ -6,6 +6,6 @@ public enum Rol {
     REPAIR_MAN;
 
     public String getAuthority() {
-        return this.name();
+        return "ROLE_" + this.name();
     }
 }

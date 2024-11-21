@@ -1,10 +1,10 @@
 -- Insert into user table
-INSERT INTO users.user (email, first_name, last_name, phone_number, rol, username)
+INSERT INTO users.user (email, first_name, last_name, phone_number, rol, username, password)
 VALUES
-    ('juanperez@example.com', 'Juan', 'Pérez', 123456789, 'CLIENT', 'juanperez123'),
-    ('anagomez@example.com', 'Ana', 'Gómez', 987654321, 'ADMIN', 'anagomez456'),
-    ('carlosmartinez@example.com', 'Carlos', 'Martínez', 555555555, 'REPAIR_MAN', 'carlosmartinez789'),
-    ('laurasanchez@example.com', 'Laura', 'Sánchez', 112233445, 'CLIENT', 'laurasanchez234');
+    ('juanperez@example.com', 'Juan', 'Pérez', 123456789, 'CLIENT', 'juanperez123', '$2a$10$6r.kbL2RUiVFxVsPAOtoGODu1LiI41M5KfpThu.JR8ymhTf79ngZu'),
+    ('anagomez@example.com', 'Ana', 'Gómez', 987654321, 'ADMIN', 'anagomez456', '$2a$10$6r.kbL2RUiVFxVsPAOtoGODu1LiI41M5KfpThu.JR8ymhTf79ngZu'),
+    ('carlosmartinez@example.com', 'Carlos', 'Martínez', 555555555, 'REPAIR_MAN', 'carlosmartinez789', '$2a$10$6r.kbL2RUiVFxVsPAOtoGODu1LiI41M5KfpThu.JR8ymhTf79ngZu'),
+    ('laurasanchez@example.com', 'Laura', 'Sánchez', 112233445, 'CLIENT', 'laurasanchez234', '$2a$10$6r.kbL2RUiVFxVsPAOtoGODu1LiI41M5KfpThu.JR8ymhTf79ngZu');
 
 -- Insert into account table
 INSERT INTO users.account (active, balance, mp_account)
