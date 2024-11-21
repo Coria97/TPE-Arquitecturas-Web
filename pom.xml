@@ -20,6 +20,7 @@
 		<module>microservicio_travels</module>
 		<module>microservicio_users</module>
 		<module>eureka_service</module>
+		<module>config_server</module>
 	</modules>
 	<url/>
 	<licenses>
@@ -118,6 +119,16 @@
 				<artifactId>jjwt-jackson</artifactId>
 				<version>0.12.6</version>
 				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.yourcompany</groupId>
+				<artifactId>auth-library</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-config-server</artifactId>
+				<version>4.1.3</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
