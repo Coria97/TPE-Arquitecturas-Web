@@ -13,11 +13,11 @@ public class Billing {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column
-    private int amount;
+    private float amount;
     @Column
     private Date billingDate;
     @Column
-    private int amountDebt;
+    private float amountDebt;
     @Column
     private String state;
     @Column

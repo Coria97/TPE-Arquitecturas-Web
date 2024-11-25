@@ -24,12 +24,6 @@ public class ScooterService {
         return scooterRepository.getScootersUsage();
     }
 
-    public List<ScooterStatesDTO> getScooterStates(Long userId) {
-        if (!userUtil.isAdmin(userId))
-            return null;
-        return scooterRepository.getScooterStates();
-    }
-
     public Scooter createScooter(Scooter scooter) {
         return scooterRepository.save(scooter);
     }

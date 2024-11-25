@@ -21,15 +21,6 @@ public class ScooterController {
         return ResponseEntity.status(HttpStatus.OK).body(scooterService.getScootersUsage());
     }
 
-    @GetMapping("/admin/state")
-    public ResponseEntity<?> getScootersStates(@RequestParam Long userId){
-        List<ScooterStatesDTO> response = scooterService.getScooterStates(userId);
-        if (response == null)
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No tiene los permisos necesarios");
-        return ResponseEntity.status(HttpStatus.OK).body(response);
-    }
-
-
     @PostMapping
     public ResponseEntity<Scooter> createScooter(@RequestBody Scooter scooter) {
         Scooter createdScooter = scooterService.createScooter(scooter);

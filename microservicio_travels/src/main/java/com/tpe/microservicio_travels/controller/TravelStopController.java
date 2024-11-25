@@ -48,7 +48,7 @@ public class TravelStopController {
             TravelStop travelStop = travelStopData.get();
             travelStop.setStart(travelStopDetails.getStart());
             travelStop.setEnd(travelStopDetails.getEnd());
-            travelStop.setTravels(travelStopDetails.getTravels());
+            travelStop.setTravel(travelStopDetails.getTravel());
 
             return new ResponseEntity<>(travelStopService.save(travelStop), HttpStatus.OK);
         } else {
